@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import data from "./data.json";
+import Header from './Header'
+import Todo_list from './Todo_list';
+import Todo from './Todo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+// So we will be making todo list
+// We will be working with hooks
+const App = () =>
+{
+  const [todos, setTodos] = useState(data);
+  return(
+    <div>
+      <Header />
+      <Todo_list todos = {todos} />
     </div>
-  );
+  )
 }
+
 
 export default App;
