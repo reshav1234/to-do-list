@@ -1,7 +1,8 @@
 // holds all of our todos
 import React from 'react'
+import Todo from './Todo'
 
-const Todo_list = (todos) =>
+const TodoList = ({todos}) =>
 {
   return (
     <div>
@@ -14,4 +15,4 @@ const Todo_list = (todos) =>
   )
 }
 
-export default Todo_list
+export default TodoList

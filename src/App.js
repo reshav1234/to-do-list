@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import data from "./data.json";
 import Header from './Header'
-import Todo_list from './Todo_list';
-import Todo from './Todo';
+import TodoList from './TodoList';
+//import Todo from './Todo';
 
 // So we will be making todo list
 // We will be working with hooks
@@ -13,7 +13,7 @@ const App = () =>
   return(
     <div>
       <Header />
-      <Todo_list todos = {todos} />
+      <TodoList todos = {todos} />
     </div>
   )
 }
