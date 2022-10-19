@@ -10,6 +10,16 @@ import TodoList from './TodoList';
 const App = () =>
 {
   const [todos, setTodos] = useState(data);
+
+  // Creating a toggle function
+  const handleToggle = (id) =>
+  {
+    let mapped = todos.map(task => {
+      return task.id == id? { ...task, complete: !task.complete } : {...task};
+    })
+    setTodos(mapped)
+  }
+
   return(
     <div>
       <Header />
