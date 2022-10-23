@@ -1,30 +1,53 @@
 import React, { useState } from 'react';
 import './App.css';
-import data from "./data.json";
-import Header from './Header'
-import TodoList from './TodoList';
-//import Todo from './Todo';
 
-// So we will be making todo list
-// We will be working with hooks
 const App = () =>
 {
-  const [todos, setTodos] = useState(data);
 
-  // Creating a toggle function
-  const handleToggle = (id) =>
+  // Array to store the todos
+  const [list, setList] = useState([])
+  // Keep track of user input
+  const [input, setInput] = useState("") 
+
+
+  // Add todo
+  const addTodo = (todo) =>
   {
-    let mapped = todos.map(task => {
-      return task.id == id? { ...task, complete: !task.complete } : {...task};
-    })
-    setTodos(mapped)
+    const newTodo = {
+      id: Math.random(),
+      todo : todo
+    }
+    // Add new todo to the existing list
+    setList([...list, newTodo]) // Three dots to indicate existing element
+
+    // After adding todo clears input box
+    setInput("")
   }
 
+  // Delete todo list
+  const deleteTodo = (id) =>
+  {
+    // Filter out todo with id
+    const newList = list.filter((todo) => todo.id !== id);
+
+    setList(newList)
+  }
+
+
   return(
-    <div>
-      <Header />
-      <TodoList todos = {todos} />
-    </div>
+    <>
+      <h1>Todo List</h1>
+      <input type = "text" value = {input} onChange = {(e) => setInput(e.target.value)} />
+      <button onClick = {() => addTodo(input)}>Add</button>
+      <ul>
+        {list.map((todo) => (
+          <li key = {todo.id}>
+            {todo.todo}
+            <button onClick = {() => deleteTodo(todo.id)}>delete</button>
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }
 
